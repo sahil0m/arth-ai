@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { generateCustomer } from "@/lib/synthetic";
 import { inferFromCustomer } from "@/lib/causal";
-import { EVENT_EMOJI, EVENT_LABEL, NEED_LABEL, SIGNAL_LABEL } from "@/lib/scm-knowledge";
+import { EVENT_LABEL, NEED_LABEL, SIGNAL_LABEL } from "@/lib/scm-knowledge";
 import { LifeEvent } from "@/lib/types";
 
 const SHOWCASE: { seed: number; event: LifeEvent }[] = [
@@ -90,7 +90,6 @@ export function HeroDemo() {
                 Causal inference → why
               </div>
               <div className="mt-1.5 flex items-center gap-2">
-                <span className="text-xl">{EVENT_EMOJI[inference.topEvent]}</span>
                 <span className="text-lg font-bold text-white">
                   {EVENT_LABEL[inference.topEvent]}
                 </span>

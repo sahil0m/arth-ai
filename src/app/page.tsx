@@ -48,7 +48,7 @@ const AGENTS = [
 export default function Home() {
   return (
     <>
-      {/* ───────────────────────── HERO ───────────────────────── */}
+      {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-grid-faint [mask-image:radial-gradient(70%_50%_at_50%_0%,black,transparent)] [background-size:48px_48px]" />
         <div className="pointer-events-none absolute left-1/2 top-[-12rem] h-[28rem] w-[28rem] -translate-x-1/2 glow-orb opacity-60" />
@@ -89,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────────────────────── PROBLEM ───────────────────────── */}
+      {/* PROBLEM */}
       <section className="section py-12">
         <Reveal>
           <div className="card grid gap-6 p-8 sm:grid-cols-3">
@@ -115,7 +115,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ───────────────────────── THE INSIGHT ───────────────────────── */}
+      {/* THE INSIGHT */}
       <section className="section py-16">
         <Reveal>
           <SectionHeader
@@ -199,7 +199,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ───────────────────────── AGENTS ───────────────────────── */}
+      {/* AGENTS */}
       <section className="section py-16">
         <Reveal>
           <SectionHeader
@@ -237,7 +237,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ───────────────────────── COMPLIANCE ───────────────────────── */}
+      {/* COMPLIANCE */}
       <section className="section py-16">
         <Reveal>
           <div className="card overflow-hidden p-8 sm:p-10">
@@ -278,7 +278,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ───────────────────────── CTA ───────────────────────── */}
+      {/* CTA */}
       <section className="section pb-8 pt-6">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-arth-violet/20 bg-gradient-to-br from-ink-800 to-ink-900 p-10 text-center shadow-glow">

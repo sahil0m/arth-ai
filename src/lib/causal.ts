@@ -1,23 +1,10 @@
-// ─────────────────────────────────────────────────────────────────────────
-// ARTH.AI — Causal Inference Engine (Layer 2, THE CORE / the moat)
+// Causal inference engine. Three things:
+//   1. inferLifeEvent      - Bayesian inversion of the SCM, P(event | signals)
+//   2. do-operator         - rank the needs the inferred event causes
+//   3. timingCounterfactual - when to act, P(convert | intervene at day d)
 //
-// Three capabilities, all genuinely computed:
-//
-//  1. INFERENCE  — invert the SCM to get P(LifeEvent | observed signals) via
-//     Bayes over the emission matrix (a Naive-Bayes / Bayesian-network read).
-//
-//  2. INTERVENTION (do-operator) — given the inferred event, rank the banking
-//     NEEDS it *causes* (event -> need edges), not the needs that merely
-//     correlate with a symptom.
-//
-//  3. COUNTERFACTUAL TIMING — model P(convert | do(intervene at day d)) as a
-//     causal response curve peaking at the need-crystallisation day, and
-//     compare do(act now) vs do(wait 14 days).
-//
-// The CONTRAST that wins the room: `benchmarkCausalVsCorrelational` runs both
-// a causal classifier and a naive correlational one over a fresh cohort and
-// returns the measured accuracy gap — live, in the browser, reproducible.
-// ─────────────────────────────────────────────────────────────────────────
+// benchmarkCausalVsCorrelational scores the causal model against a naive
+// correlational baseline on a fresh cohort so the accuracy gap is measurable.
 
 import {
   EMISSION,
@@ -39,7 +26,7 @@ import {
   TimingCounterfactual,
 } from "./types";
 
-// ── 1. BAYESIAN SCM INVERSION ──────────────────────────────────────────────
+// 1. BAYESIAN SCM INVERSION
 // P(E | s) ∝ P(E) · Π_i  [ s_i·P(sig_i|E) + (1-s_i)·(1-P(sig_i|E)) ]
 // Graded signals s_i ∈ [0,1] act as soft evidence.
 
@@ -116,7 +103,7 @@ export function isActionable(inf: CausalInference): boolean {
   return inf.topEvent !== "NONE" && inf.confidence >= ACTION_THRESHOLD;
 }
 
-// ── 3. COUNTERFACTUAL TIMING ───────────────────────────────────────────────
+// 3. COUNTERFACTUAL TIMING
 // Conversion responds causally to *when* we intervene relative to the need.
 // Model: a skewed bell peaking ~ a few days BEFORE the need crystallises
 // (people convert best just before they consciously feel the need). Acting too
@@ -152,7 +139,7 @@ export function timingCounterfactual(inf: CausalInference): TimingCounterfactual
   };
 }
 
-// ── THE BENCHMARK — causal vs correlational, measured live ──────────────────
+// THE BENCHMARK — causal vs correlational, measured live
 // Correlational model: maps the single strongest signal directly to the most
 // co-occurring need (classic "jewelry -> personal loan"). It never reasons
 // about the confounding life event, so it misfires whenever a symptom is
@@ -249,7 +236,7 @@ export function benchmarkCausalVsCorrelational(cohort: Customer[]): BenchmarkRes
   };
 }
 
-// ── ABLATION & ROBUSTNESS SUITE ─────────────────────────────────────────────
+// ABLATION & ROBUSTNESS SUITE
 // What technical judges ask: how much does each component matter, how does the
 // model degrade under sparse evidence, and what is the precision/coverage
 // trade-off of the action threshold? All computed live, reproducibly.
@@ -361,7 +348,7 @@ function hash01(id: string, salt: number): number {
   return ((h >>> 0) % 1000) / 1000;
 }
 
-// ── helpers ────────────────────────────────────────────────────────────────
+// helpers
 function softmaxRecord(logits: Record<LifeEvent, number>): Record<LifeEvent, number> {
   const vals = LIFE_EVENTS.map((e) => logits[e]);
   const max = Math.max(...vals);

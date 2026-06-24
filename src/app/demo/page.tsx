@@ -29,7 +29,6 @@ import { generateCustomer } from "@/lib/synthetic";
 import { inferFromCustomer, timingCounterfactual, isActionable } from "@/lib/causal";
 import { networkFeatures } from "@/lib/signals";
 import {
-  EVENT_EMOJI,
   EVENT_LABEL,
   LIFE_EVENTS,
   NEED_LABEL,
@@ -83,7 +82,7 @@ export default function DemoPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-        {/* ── LEFT: picker + profile ── */}
+        {/* LEFT: picker + profile */}
         <div className="space-y-5">
           <CustomerPicker state={picker} onChange={setPicker} />
 
@@ -133,7 +132,6 @@ export default function DemoPage() {
                 Ground truth (synthetic)
               </div>
               <div className="mt-2 flex items-center gap-2">
-                <span className="text-lg">{EVENT_EMOJI[customer.trueLifeEvent]}</span>
                 <span className="font-semibold text-white">{EVENT_LABEL[customer.trueLifeEvent]}</span>
               </div>
               <div className={`mt-2 flex items-center gap-1.5 text-sm ${correct ? "text-arth-teal" : "text-arth-rose"}`}>
@@ -144,7 +142,7 @@ export default function DemoPage() {
           )}
         </div>
 
-        {/* ── RIGHT: the pipeline ── */}
+        {/* RIGHT: the pipeline */}
         <div className="space-y-6">
           {/* STEP 1 — signals */}
           <Step n={1} title="Signal Engine" subtitle="Behavioural & transaction signals extracted from the UPI graph">
@@ -173,7 +171,7 @@ export default function DemoPage() {
                   <div key={x.event}>
                     <div className="flex items-center justify-between text-xs">
                       <span className={i === 0 ? "font-semibold text-white" : "text-slate-400"}>
-                        {EVENT_EMOJI[x.event]} {EVENT_LABEL[x.event]}
+                        {EVENT_LABEL[x.event]}
                       </span>
                       <span className="mono-num text-slate-500">{(x.p * 100).toFixed(1)}%</span>
                     </div>
@@ -278,7 +276,7 @@ export default function DemoPage() {
           <Step n={5} title="Autonomous Action" subtitle="Right need · right time · right channel · right language" last>
             <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-ink-800 to-ink-900 p-5">
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                <Badge tone="violet">{EVENT_EMOJI[inference.topEvent]} {EVENT_LABEL[inference.topEvent]}</Badge>
+                <Badge tone="violet">{EVENT_LABEL[inference.topEvent]}</Badge>
                 <Badge tone="teal">{NEED_LABEL[inference.rankedNeeds[0]?.need ?? "fixed_deposit"]}</Badge>
                 <Badge>{customer.preferredChannel}</Badge>
                 <Badge>{customer.language}</Badge>
@@ -323,7 +321,7 @@ export default function DemoPage() {
   );
 }
 
-// ── small components ──
+// small components
 function Step({
   n, title, subtitle, children, last,
 }: {

@@ -1,10 +1,8 @@
-// ─────────────────────────────────────────────────────────────────────────
 // ARTH.AI — Research citations registry
 // Every quantitative claim in the product traces to one of these sources.
 // Per the project directive: no invented numbers. Where we show our own
 // figures (the in-app benchmark), they are labelled as a reproducible
 // controlled simulation, distinct from cited real-world results.
-// ─────────────────────────────────────────────────────────────────────────
 
 export interface Citation {
   id: string;

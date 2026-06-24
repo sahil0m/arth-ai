@@ -1,15 +1,13 @@
-// ─────────────────────────────────────────────────────────────────────────
 // ARTH.AI — Signal Engine (Layer 1)
 //
 // Converts a raw 180-day transaction history into a graded SignalVector.
 // In the full architecture this is the Transaction GNN + Behavioural LSTM;
-// here it is implemented as interpretable, deterministic feature extraction
-// so judges can trace every number back to a transaction.
+// here it is interpretable, deterministic feature extraction so every number
+// traces back to a specific transaction.
 //
 // Each signal strength ∈ [0,1] measures how strongly a merchant-category
 // burst stands out against the customer's own baseline (self-normalised, so
 // it works across income levels).
-// ─────────────────────────────────────────────────────────────────────────
 
 import { SIGNAL_CATEGORY, SIGNAL_KEYS } from "./scm-knowledge";
 import {
@@ -109,7 +107,7 @@ function detectEmployerChange(txns: MerchantTxn[]): number {
 const round2 = (x: number) => Math.round(x * 100) / 100;
 
 // ── Higher-order network/behavioural features (for the SPARSH Trust Radius
-//    and the customer graph visualisation) ────────────────────────────────
+// and the customer graph visualisation)
 
 export interface NetworkFeatures {
   transactionVelocity: number; // txns / month, recent vs older ratio

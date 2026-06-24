@@ -16,7 +16,14 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+  : process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "ARTH.AI — Causal Agentic Intelligence for Banking",
   description:
     "ARTH.AI is the first causally-intelligent agentic banking platform. It understands WHY customers act — not just what they did — to drive acquisition, digital adoption and engagement for SBI. Built for the SBI BI Hackathon @ GFF 2026.",

@@ -1,4 +1,3 @@
-// ─────────────────────────────────────────────────────────────────────────
 // ARTH.AI — Autonomous Agent Network (Layer 3)
 //
 // Four agents that consume the causal inference + signals and emit concrete,
@@ -9,14 +8,13 @@
 //   PRAGATI — Adoption      (Digital Comfort Score, progressive disclosure)
 //   BANDHAN — Engagement    (Financial Empathy Index, proactive renegotiation)
 //   GYAAN   — Meta-learning (Financial Twin clusters, peer-validated guidance)
-// ─────────────────────────────────────────────────────────────────────────
 
 import { networkFeatures } from "./signals";
 import { inferFromCustomer, timingCounterfactual } from "./causal";
 import { EVENT_LABEL, NEED_LABEL } from "./scm-knowledge";
 import { BankingNeed, Channel, Customer, Language } from "./types";
 
-// ── SPARSH — Customer Acquisition ──────────────────────────────────────────
+// SPARSH — Customer Acquisition
 export interface SparshDecision {
   eligible: boolean;
   lifeEventScore: number; // 0..100
@@ -68,7 +66,7 @@ export function runSparsh(customer: Customer): SparshDecision {
 
   const message =
     decision === "ACTIVATE"
-      ? `Namaste ${customer.name}! Open your free SBI zero-balance account in 4 minutes — fully from your phone, no branch visit. Aadhaar + a 10-second selfie is all it takes. Your first UPI payment is on us — ₹51 cashback. 🎉`
+      ? `Namaste ${customer.name}, open your free SBI zero-balance account in 4 minutes — fully from your phone, no branch visit. Aadhaar and a 10-second selfie is all it takes, and your first UPI payment is on us with ₹51 cashback.`
       : `Hi ${customer.name}, when you're ready, SBI lets you open an account in minutes from home. We'll be here.`;
 
   return {
@@ -85,7 +83,7 @@ export function runSparsh(customer: Customer): SparshDecision {
   };
 }
 
-// ── PRAGATI — Digital Adoption ─────────────────────────────────────────────
+// PRAGATI — Digital Adoption
 export interface DigitalComfort {
   score: number; // 0..100
   tier: "Beginner" | "Intermediate" | "Proficient" | "Advanced";
@@ -179,14 +177,14 @@ function buildNudge(customer: Customer, need: BankingNeed | undefined, feature: 
   if (need === "fixed_deposit" || feature.includes("Fixed Deposit")) {
     const park = Math.round((salary * 0.25) / 1000) * 1000;
     const earn = Math.round(park * 0.071 * (90 / 365));
-    return `Your ₹${salary.toLocaleString("en-IN")} salary just arrived 🎉 Park ₹${park.toLocaleString(
+    return `Your ₹${salary.toLocaleString("en-IN")} salary just arrived. Park ₹${park.toLocaleString(
       "en-IN"
-    )} for 90 days → earn ₹${earn.toLocaleString("en-IN")} extra. [Open FD in 1 tap] — pre-filled for you.`;
+    )} for 90 days and earn ₹${earn.toLocaleString("en-IN")} extra. Open an FD in one tap — we've pre-filled it for you.`;
   }
   return `${customer.name}, ${feature} fits where you are right now. We've pre-filled everything — set it up in under a minute. [Get started]`;
 }
 
-// ── BANDHAN — Engagement & Retention ───────────────────────────────────────
+// BANDHAN — Engagement & Retention
 export interface FinancialEmpathy {
   fei: number; // 0..100, higher = more stress
   level: "Calm" | "Watchful" | "Elevated" | "High Stress";
@@ -277,7 +275,7 @@ export function runBandhan(customer: Customer): {
   };
 }
 
-// ── GYAAN — Meta-learning / Financial Twins ────────────────────────────────
+// GYAAN — Meta-learning / Financial Twins
 export interface FinancialTwins {
   clusterName: string;
   cohortSize: number;
@@ -302,7 +300,7 @@ export function runGyaan(customer: Customer): FinancialTwins {
   };
 }
 
-// ── shared helpers ─────────────────────────────────────────────────────────
+// shared helpers
 function bucket(age: number) {
   const lo = Math.floor(age / 5) * 5;
   return `${lo}–${lo + 4}`;

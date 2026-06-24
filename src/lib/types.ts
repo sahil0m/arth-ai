@@ -1,8 +1,6 @@
-// ─────────────────────────────────────────────────────────────────────────
 // ARTH.AI — Core domain types
 // Shared across the synthetic data generator, signal engine, causal SCM,
 // and the 4 autonomous agents.
-// ─────────────────────────────────────────────────────────────────────────
 
 /** The latent life events that causally drive both spending signals AND banking needs. */
 export type LifeEvent =

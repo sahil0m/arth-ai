@@ -2,7 +2,6 @@
 
 import { Dices, User } from "lucide-react";
 import { LifeEvent } from "@/lib/types";
-import { EVENT_EMOJI } from "@/lib/scm-knowledge";
 
 export interface PickerState {
   seed: number;
@@ -47,7 +46,6 @@ export function CustomerPicker({
                   : "border-white/10 bg-white/[0.02] text-slate-400 hover:text-white"
               }`}
             >
-              {s.event && <span className="mr-1">{EVENT_EMOJI[s.event]}</span>}
               {s.label}
             </button>
           );

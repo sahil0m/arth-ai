@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Play, Loader2 } from "lucide-react";
 import { generateCohort } from "@/lib/synthetic";
 import { benchmarkCausalVsCorrelational, BenchmarkResult } from "@/lib/causal";
-import { EVENT_EMOJI, EVENT_LABEL } from "@/lib/scm-knowledge";
+import { EVENT_LABEL } from "@/lib/scm-knowledge";
 import { MeterBar } from "@/components/ui";
 
 export function LiveBenchmark() {
@@ -67,7 +67,7 @@ export function LiveBenchmark() {
               return (
                 <div key={c.event}>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-300">{EVENT_EMOJI[c.event]} {EVENT_LABEL[c.event]}</span>
+                    <span className="text-slate-300">{EVENT_LABEL[c.event]}</span>
                     <span className="mono-num text-slate-500">{c.correct}/{c.total} · {(acc * 100).toFixed(0)}%</span>
                   </div>
                   <div className="mt-1"><MeterBar value={acc} accent={c.event === "NONE" ? "amber" : "violet"} /></div>

@@ -17,7 +17,7 @@ import { Badge, MeterBar } from "@/components/ui";
 import { generateCustomer } from "@/lib/synthetic";
 import { runSparsh, runPragati, runBandhan, runGyaan } from "@/lib/agents";
 import { inferFromCustomer } from "@/lib/causal";
-import { EVENT_EMOJI, EVENT_LABEL } from "@/lib/scm-knowledge";
+import { EVENT_LABEL } from "@/lib/scm-knowledge";
 
 export default function AgentsPage() {
   const [picker, setPicker] = useState<PickerState>({ seed: 88, forceEvent: "WEDDING" });
@@ -66,7 +66,6 @@ export default function AgentsPage() {
             <div className="mt-4 rounded-xl border border-arth-violet/20 bg-arth-violet/[0.06] p-3">
               <div className="text-[11px] font-semibold uppercase tracking-wider text-arth-violet">Causal read</div>
               <div className="mt-1 flex items-center gap-2">
-                <span>{EVENT_EMOJI[inference.topEvent]}</span>
                 <span className="text-sm font-semibold text-white">{EVENT_LABEL[inference.topEvent]}</span>
                 <span className="mono-num ml-auto text-xs text-arth-violet">{(inference.confidence * 100).toFixed(0)}%</span>
               </div>
@@ -116,7 +115,7 @@ export default function AgentsPage() {
                     <span key={f} className="rounded-full border border-arth-teal/30 bg-arth-teal/10 px-2.5 py-1 text-[11px] text-arth-teal">{f}</span>
                   ))}
                   {pragati.comfort.nextUnlock && (
-                    <span className="rounded-full border border-dashed border-white/15 px-2.5 py-1 text-[11px] text-slate-500">🔒 {pragati.comfort.nextUnlock}</span>
+                    <span className="rounded-full border border-dashed border-white/15 px-2.5 py-1 text-[11px] text-slate-500">Locked: {pragati.comfort.nextUnlock}</span>
                   )}
                 </div>
                 <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">Nudge timing</div>

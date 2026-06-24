@@ -1,25 +1,14 @@
-// ─────────────────────────────────────────────────────────────────────────
-// ARTH.AI — Structural Causal Model knowledge base
+// Structural causal model knowledge base.
 //
-// This file encodes the CAUSAL GRAPH that ARTH.AI reasons over:
+// The causal graph: a latent life event is the common cause of BOTH the
+// spending signals (jewelry, venue, apparel...) AND the banking need (joint
+// account, loan, SIP...). The signals and the need are not cause-and-effect of
+// each other - they are confounded by the life event. So instead of reading
+// "jewelry -> loan", we read "wedding -> {jewelry, loan}" and time the
+// intervention to the event, not the symptom.
 //
-//        ┌──────────────┐
-//        │  LIFE EVENT  │   (latent common cause)
-//        └──────┬───────┘
-//        ┌──────┴───────────────────────────┐
-//        ▼ (emits)                           ▼ (creates)
-//   SPENDING SIGNALS                    BANKING NEED
-//   jewelry, venue, apparel ...    joint a/c, loan, SIP ...
-//
-// The key causal insight: spending signals and the banking need are NOT
-// cause-and-effect of each other — they are CONFOUNDED by the life event.
-// Standard ML reads "jewelry -> loan". ARTH.AI reads "wedding -> {jewelry, loan}"
-// and so times the intervention to the event, not the symptom.
-//
-// Parameters are calibrated, interpretable priors (the kind an SCM is built
-// from in DoWhy / a Bayesian network). The /research folder reproduces the
-// same structure with DoWhy + a sampled dataset for technical validation.
-// ─────────────────────────────────────────────────────────────────────────
+// Parameters below are interpretable priors. The /research folder reproduces
+// the same structure with DoWhy on a sampled dataset.
 
 import {
   BankingNeed,
@@ -196,18 +185,6 @@ export const EVENT_LABEL: Record<LifeEvent, string> = {
   HOME_PURCHASE: "Home purchase",
   FESTIVAL: "Festival / big purchase season",
   NONE: "No major life event",
-};
-
-export const EVENT_EMOJI: Record<LifeEvent, string> = {
-  WEDDING: "💍",
-  JOB_CHANGE: "💼",
-  NEW_CHILD: "👶",
-  RELOCATION: "🏙️",
-  MEDICAL: "🏥",
-  EDUCATION: "🎓",
-  HOME_PURCHASE: "🏠",
-  FESTIVAL: "🪔",
-  NONE: "•",
 };
 
 export const SIGNAL_LABEL: Record<SignalKey, string> = {

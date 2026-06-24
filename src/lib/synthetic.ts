@@ -1,4 +1,3 @@
-// ─────────────────────────────────────────────────────────────────────────
 // ARTH.AI — Synthetic UPI customer generator
 //
 // Samples a latent life event per customer from EVENT_PRIORS, then emits
@@ -7,9 +6,8 @@
 // causal-inference engine that inverts it is doing genuine inference, and the
 // correlation-vs-causal accuracy gap is measurable, not asserted.
 //
-// Deterministic via a seeded PRNG so a given seed always reproduces the same
-// customer — essential for a live demo that must never surprise you.
-// ─────────────────────────────────────────────────────────────────────────
+// Deterministic via a seeded PRNG, so the same seed always reproduces the
+// same customer.
 
 import {
   EMISSION,
@@ -30,7 +28,7 @@ import {
   SignalKey,
 } from "./types";
 
-// ── Seeded PRNG (mulberry32) ───────────────────────────────────────────────
+// Seeded PRNG (mulberry32)
 export function mulberry32(seed: number) {
   let a = seed >>> 0;
   return function () {
