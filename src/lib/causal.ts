@@ -104,6 +104,18 @@ export function inferFromCustomer(customer: Customer): {
   return { signals, inference: inferLifeEvent(signals) };
 }
 
+/**
+ * Action threshold — the operating point from the threshold sweep (precision ~81%
+ * at this confidence). ARTH.AI only intervenes on a life event above this bar;
+ * below it, agents hold back. This trades NONE-recall for intervention precision
+ * (no over-nudging stable customers) and is the documented, tunable policy.
+ */
+export const ACTION_THRESHOLD = 0.6;
+
+export function isActionable(inf: CausalInference): boolean {
+  return inf.topEvent !== "NONE" && inf.confidence >= ACTION_THRESHOLD;
+}
+
 // ── 3. COUNTERFACTUAL TIMING ───────────────────────────────────────────────
 // Conversion responds causally to *when* we intervene relative to the need.
 // Model: a skewed bell peaking ~ a few days BEFORE the need crystallises

@@ -26,7 +26,7 @@ import {
 import { CustomerPicker, PickerState } from "@/components/customer-picker";
 import { MeterBar, Badge } from "@/components/ui";
 import { generateCustomer } from "@/lib/synthetic";
-import { inferFromCustomer, timingCounterfactual } from "@/lib/causal";
+import { inferFromCustomer, timingCounterfactual, isActionable } from "@/lib/causal";
 import { networkFeatures } from "@/lib/signals";
 import {
   EVENT_EMOJI,
@@ -59,6 +59,7 @@ export default function DemoPage() {
     .sort((a, b) => b.p - a.p);
 
   const correct = inference.topEvent === customer.trueLifeEvent;
+  const actionable = isActionable(inference);
 
   return (
     <div className="section py-10">
@@ -206,6 +207,8 @@ export default function DemoPage() {
             </div>
           </Step>
 
+          {actionable ? (
+          <>
           {/* STEP 3 — do-operator needs */}
           <Step n={3} title="Intervention — do-operator" subtitle="The banking needs this event causes, ranked by causal weight">
             <div className="flex flex-wrap gap-2">
@@ -294,6 +297,26 @@ export default function DemoPage() {
               </Link>
             </div>
           </Step>
+          </>
+          ) : (
+            <Step n={3} title="Decision — hold back" subtitle={`Confidence below the ${Math.round(0.6 * 100)}% action threshold — ARTH.AI does not intervene`} last>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-arth-teal">
+                  <CheckCircle2 size={16} /> No strong life event — steady customer
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                  The evidence doesn’t clear ARTH.AI’s confidence bar, so it deliberately
+                  <strong className="text-white"> stays silent</strong>. Restraint is a feature:
+                  not nudging during calm periods is what builds long-term trust and keeps
+                  intervention precision high (this is the tunable action threshold from the{" "}
+                  <Link href="/methodology" className="text-arth-violet hover:underline">ablation studies</Link>).
+                </p>
+                <p className="mt-2 text-xs text-slate-500">
+                  Raise or lower the threshold to trade coverage for precision — see the threshold sweep on the Methodology page.
+                </p>
+              </div>
+            </Step>
+          )}
         </div>
       </div>
     </div>
