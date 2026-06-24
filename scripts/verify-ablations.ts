@@ -1,0 +1,13 @@
+import { generateCohort } from "../src/lib/synthetic";
+import { ablationBaselines, thresholdSweep, robustnessSweep } from "../src/lib/causal";
+const cohort = generateCohort(600);
+console.log("=== COMPONENT ABLATION (need accuracy) ===");
+const a = ablationBaselines(cohort);
+console.log(`  Full causal SCM : ${(a.causal*100).toFixed(1)}%`);
+console.log(`  Correlational   : ${(a.correlational*100).toFixed(1)}%`);
+console.log(`  Prior-only      : ${(a.priorOnly*100).toFixed(1)}%`);
+console.log(`  Random          : ${(a.random*100).toFixed(1)}%`);
+console.log("\n=== THRESHOLD SWEEP (coverage / precision) ===");
+for (const p of thresholdSweep(cohort)) console.log(`  thr ${p.threshold.toFixed(1)} -> coverage ${(p.coverage*100).toFixed(0)}% | precision ${(p.precision*100).toFixed(0)}%`);
+console.log("\n=== ROBUSTNESS (signal dropout) ===");
+for (const r of robustnessSweep(cohort)) console.log(`  dropout ${(r.dropout*100).toFixed(0)}% -> accuracy ${(r.accuracy*100).toFixed(1)}%`);

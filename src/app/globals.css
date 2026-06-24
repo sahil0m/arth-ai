@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-slate-200;
+  background-image:
+    radial-gradient(80% 50% at 50% -10%, rgba(124, 92, 255, 0.12), transparent 60%),
+    radial-gradient(50% 40% at 100% 0%, rgba(45, 212, 191, 0.06), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: #fff;
+}
+
+/* Thin premium scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 92, 255, 0.25);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 92, 255, 0.45);
+  background-clip: padding-box;
+}
+
+@layer components {
+  .glass {
+    @apply bg-ink-900/60 backdrop-blur-xl border border-white/[0.06];
+  }
+  .glass-strong {
+    @apply bg-ink-800/70 backdrop-blur-2xl border border-white/[0.08];
+  }
+  .card {
+    @apply glass rounded-2xl shadow-card;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-slate-300;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-arth-violet via-arth-indigo to-arth-teal bg-clip-text text-transparent;
+  }
+  .section {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-arth-violet to-arth-indigo px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-all hover:brightness-110 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-semibold text-slate-200 transition-all hover:bg-white/[0.06];
+  }
+  .hairline {
+    @apply border-white/[0.06];
+  }
+}
+
+/* Animated conic glow used behind hero + section headers */
+.glow-orb {
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(124, 92, 255, 0.0) 0deg,
+    rgba(124, 92, 255, 0.5) 120deg,
+    rgba(45, 212, 191, 0.4) 240deg,
+    rgba(124, 92, 255, 0.0) 360deg
+  );
+  filter: blur(60px);
+}
+
+.mono-num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
