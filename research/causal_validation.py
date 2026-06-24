@@ -114,7 +114,7 @@ def main() -> None:
     causal_effect = float(estimate.value)
     print(f"[Causal/DoWhy] back-door-adjusted direct effect  : {causal_effect:+.3f}")
     print(f"   Adjusting for the life event collapses the effect toward the")
-    print(f"   true value ({true_effect:.3f}) — the association was confounding.\n")
+    print(f"   true value ({true_effect:.3f}) - the association was confounding.\n")
 
     print(f"Confounding bias removed: {abs(naive - causal_effect):.3f} "
           f"({(1 - abs(causal_effect) / max(abs(naive), 1e-9)) * 100:.0f}% of the naive signal was spurious)\n")
@@ -134,7 +134,7 @@ def main() -> None:
             print(f"  - {name}: skipped ({exc})")
 
     print("\nConclusion: jewelry_spend and banking_need are confounded by the life")
-    print("event. ARTH.AI infers the event and acts on the cause — not the symptom.")
+    print("event. ARTH.AI infers the event and acts on the cause - not the symptom.")
 
 
 if __name__ == "__main__":

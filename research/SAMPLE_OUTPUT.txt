@@ -1,0 +1,26 @@
+================================================================
+ARTH.AI - Causal validation (DoWhy)
+================================================================
+Samples: 8000 | life-event base rate: 17.68%
+TRUE direct effect of jewelry_spend -> banking_need: 0.000
+[Correlational] naive jewelry->need association : +0.474
+   A bank acting on this would chase the symptom and mistime the offer.
+[Causal/DoWhy] back-door-adjusted direct effect  : +0.014
+   Adjusting for the life event collapses the effect toward the
+   true value (0.000) - the association was confounding.
+Confounding bias removed: 0.460 (97% of the naive signal was spurious)
+----------------------------------------------------------------
+Refutation tests (a credible causal estimate should survive these):
+----------------------------------------------------------------
+  - Placebo treatment (effect should vanish)
+      Refute: Use a Placebo Treatment
+Estimated effect:0.013863534567020414
+New effect:-0.00027044946501372097
+p value:0.98
+  - Random common cause (effect should hold)
+      Refute: Add a random common cause
+Estimated effect:0.013863534567020414
+New effect:0.013849565462481108
+p value:0.82
+Conclusion: jewelry_spend and banking_need are confounded by the life
+event. ARTH.AI infers the event and acts on the cause - not the symptom.

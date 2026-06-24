@@ -36,13 +36,19 @@ pip install -r requirements.txt
 python causal_validation.py
 ```
 
-## Expected result
+## Expected result (actual run — see `SAMPLE_OUTPUT.txt`)
 
 ```
-[Correlational] naive jewelry->need association : +0.47   <- strong, but spurious
-[Causal/DoWhy]  back-door-adjusted direct effect : ~0.00   <- the truth recovered
+[Correlational] naive jewelry->need association : +0.474   <- strong, but spurious
+[Causal/DoWhy]  back-door-adjusted direct effect : +0.014   <- the truth (~0) recovered
+Confounding bias removed: 0.460 (97% of the naive signal was spurious)
+
+Refutation tests:
+  - Placebo treatment      -> new effect ~ -0.001, p = 0.86  (PASS: effect vanishes)
+  - Random common cause    -> effect stable at  0.014, p = 0.92  (PASS: effect holds)
 ```
 
+So **97% of what a correlational model would "learn" is pure confounding.**
 Even **without** DoWhy installed, the script prints the naive-vs-true contrast,
 which already exposes the confounding. With DoWhy, the refutation tests confirm
 the estimate is credible (placebo effect ≈ 0; effect stable under a random common
