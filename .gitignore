@@ -35,3 +35,7 @@ yarn-error.log*
 research/__pycache__/
 research/.venv/
 research/*.pyc
+
+# internal working docs (not part of the published project)
+prompt.md
+description.md
