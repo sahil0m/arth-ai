@@ -9,7 +9,7 @@
 Causal, agentic AI for customer acquisition, digital adoption & engagement.
 Built for the **SBI BI Hackathon @ GFF 2026** · _AI & Emerging Tech track_.
 
-[Live Demo](#) · [Methodology](#-methodology--why-this-is-real) · [Compliance](#-regulatory-readiness)
+**[Live prototype → arth-ai-one.vercel.app](https://arth-ai-one.vercel.app)** · [Methodology](#-methodology--why-this-is-real) · [Compliance](#-regulatory-readiness)
 
 </div>
 
