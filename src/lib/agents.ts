@@ -257,7 +257,7 @@ export function runBandhan(customer: Customer): {
       empathy,
       response: {
         mode: "TRUST_BUILD",
-        title: "Proactive Rate Renegotiation — the trust bomb",
+        title: "Proactive rate review",
         message: `Good news, ${customer.name}! Based on your excellent repayment record you now qualify for our ${newRate}% home-loan rate (down from ${oldRate}%). That's about ₹${(
           monthlySaving * 12
         ).toLocaleString("en-IN")} saved per year — want us to apply it automatically?`,

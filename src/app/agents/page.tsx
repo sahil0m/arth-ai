@@ -76,7 +76,7 @@ export default function AgentsPage() {
         <div className="space-y-6">
           {/* SPARSH */}
           <AgentCard name="SPARSH" tag="Customer Acquisition" icon={Target} color="violet"
-            tagline="Invisible Qualification Engine — Financial Trust Radius">
+            tagline="Financial Trust Radius — consent-based prospect qualification">
             <div className="grid gap-4 sm:grid-cols-3">
               <Kpi label="Life-event score" value={`${sparsh.lifeEventScore}/100`} />
               <Kpi label="Trust Radius" value={`${sparsh.trustRadius} SBI links`} />

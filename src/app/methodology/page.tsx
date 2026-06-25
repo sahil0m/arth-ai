@@ -89,7 +89,7 @@ export default function MethodologyPage() {
         <Reveal delay={0.05}><div className="mt-5"><LiveAblation /></div></Reveal>
       </div>
 
-      {/* Limitations — honesty wins technical judges */}
+      {/* Limitations */}
       <Reveal>
         <div className="mt-12 card border-arth-amber/20 p-7">
           <div className="flex items-center gap-2">

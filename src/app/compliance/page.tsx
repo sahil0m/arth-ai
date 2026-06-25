@@ -37,7 +37,7 @@ export default function CompliancePage() {
         <Badge tone="teal"><Lock size={13} /> Regulatory readiness</Badge>
         <SectionHeader
           title="Compliant by design — not by patch"
-          subtitle="ARTH.AI is engineered against India's current AI-in-finance regime: the RBI FREE-AI framework and the DPDP Act 2023 & Rules 2025. Governance is part of the architecture, scoring directly on the jury's Regulatory Readiness criterion."
+          subtitle="ARTH.AI is engineered against India's current AI-in-finance regime: the RBI FREE-AI framework and the DPDP Act 2023 & Rules 2025. Governance is part of the architecture, not an afterthought."
         />
       </Reveal>
 
@@ -106,10 +106,10 @@ export default function CompliancePage() {
         </Reveal>
       </div>
 
-      {/* The objection-handling table */}
+      {/* Governance FAQ */}
       <Reveal>
         <div className="mt-14 card p-7">
-          <h3 className="text-lg font-bold text-white">If a jury asks…</h3>
+          <h3 className="text-lg font-bold text-white">Common questions on governance</h3>
           <div className="mt-5 divide-y divide-white/[0.06]">
             {[
               ["How is customer data protected?", "Federated learning — raw data never leaves the device; only differentially-private updates aggregate."],

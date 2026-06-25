@@ -27,7 +27,7 @@ const LAYERS = [
     ],
   },
   {
-    n: 2, name: "Causal Inference Engine", sub: "Layer 2 · the moat", icon: Brain, color: "text-arth-violet",
+    n: 2, name: "Causal Inference Engine", sub: "Layer 2 · the core", icon: Brain, color: "text-arth-violet",
     points: [
       "Structural Causal Model — life event is the latent common cause",
       "Bayesian inversion → P(life event | signals); do-operator → caused needs",
@@ -113,9 +113,9 @@ export default function ArchitecturePage() {
           <Eyebrow>Implementable today</Eyebrow>
           <h3 className="mt-3 text-2xl font-bold text-white">Production technology stack</h3>
           <p className="mt-2 max-w-2xl text-sm text-slate-400">
-            Every component is a real, production-grade open-source tool. The
-            hackathon prototype ships a faithful causal engine in TypeScript so the
-            science runs live in the browser, validated by a Python DoWhy notebook.
+            Every component is a real, production-grade open-source tool. This
+            prototype ships a faithful causal engine in TypeScript so the science
+            runs live in the browser, validated by a Python DoWhy notebook.
           </p>
         </div>
       </Reveal>

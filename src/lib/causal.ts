@@ -237,9 +237,9 @@ export function benchmarkCausalVsCorrelational(cohort: Customer[]): BenchmarkRes
 }
 
 // ABLATION & ROBUSTNESS SUITE
-// What technical judges ask: how much does each component matter, how does the
-// model degrade under sparse evidence, and what is the precision/coverage
-// trade-off of the action threshold? All computed live, reproducibly.
+// How much each component matters, how the model degrades under sparse
+// evidence, and the precision/coverage trade-off of the action threshold.
+// All computed live and reproducibly.
 
 export interface AblationBaselines {
   n: number;
